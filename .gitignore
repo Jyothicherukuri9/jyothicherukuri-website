@@ -1,4 +1,5 @@
 .superpowers/
+.claude/
 
 # Personal resume contains phone number; keep out of the repo since it will
 # be pushed to GitHub for Pages hosting.
