@@ -16,10 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  function normalizePath(path) {
+    path = path.replace(/index\.html$/, '');
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+    return path || '/';
+  }
+
+  var currentPath = normalizePath(window.location.pathname);
   document.querySelectorAll('.site-nav a').forEach(function (link) {
-    var linkPage = link.getAttribute('href').split('/').pop();
-    if (linkPage === currentPage) {
+    var linkPath = normalizePath(link.pathname);
+    if (linkPath === currentPath) {
       link.classList.add('active');
     }
   });
